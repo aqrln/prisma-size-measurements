@@ -7,7 +7,8 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages."${system}";
-        inherit (pkgs) podman;
+        packageString = "prisma@4.9.0";
+
         runInContainer = (name: script:
           let scriptFile = pkgs.writeText "scriptFile" script; in
           pkgs.writeShellScriptBin name ''
@@ -26,51 +27,51 @@
       {
         packages = {
           vanillaSize = runInContainer "vanillaSize" ''
-            npm i prisma
+            npm i ${packageString}
           '';
 
           smallVanillaPrismaClient = runInContainer "vanillaSize" ''
-            npm i prisma
+            npm i ${packageString}
             cp ${./small_schema.prisma} schema.prisma
             cat << EOF >> schema.prisma
               generator jsclient {
                 provider = "prisma-client-js"
               }
             EOF
-            npx prisma generate
+            npx ${packageString} generate
           '';
 
           largeVanillaPrismaClient = runInContainer "vanillaSize" ''
-            npm i prisma
+            npm i ${packageString}
             cp ${./large_schema.prisma} schema.prisma
             cat << EOF >> schema.prisma
               generator jsclient {
                 provider = "prisma-client-js"
               }
             EOF
-            npx prisma generate
+            npx ${packageString} generate
           '';
 
           smallEdgePrismaClient = runInContainer "vanillaSize" ''
-            npm i prisma
+            npm i ${packageString}
             cp ${./small_schema.prisma} schema.prisma
             cat << EOF >> schema.prisma
               generator jsclient {
                 provider = "prisma-client-js"
               }
             EOF
-            npx prisma generate --data-proxy
+            npx ${packageString} generate --data-proxy
           '';
 
           largeEdgePrismaClient = runInContainer "vanillaSize" ''
-            npm i prisma
+            npm i ${packageString}
             cp ${./large_schema.prisma} schema.prisma
             cat << EOF >> schema.prisma
               generator jsclient {
                 provider = "prisma-client-js"
               }
             EOF
-            npx prisma generate --data-proxy
+            npx ${packageString} generate --data-proxy
           '';
 
           inherit (pkgs) diskonaut;
