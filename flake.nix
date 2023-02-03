@@ -74,6 +74,21 @@
             npx ${packageString} generate --data-proxy
           '';
 
+
+          # last step:
+          # aws lambda update-function-code --function-name cold-start-test --zip-file "fileb://lambda-app.zip"
+          awsZip = pkgs.writeShellScriptBin "awsZip" ''
+            docker run --rm -it -v /nix:/nix -v ./lambda-app:/home --entrypoint=bash docker.io/node:lts -c 'cd /home; npm i; npx prisma generate'
+            pushd lambda-app
+            : Delete the local binaries
+            find node_modules -name 'libquery*debian*' -delete
+            : Delete the CLI
+            rm -rf node_modules/prisma
+            rm lambda-app.zip
+            ${pkgs.zip}/bin/zip -r lambda-app.zip .
+            popd
+          '';
+
           inherit (pkgs) diskonaut;
         };
       });
