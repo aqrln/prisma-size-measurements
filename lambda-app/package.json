@@ -9,9 +9,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "prisma": "=4.8.0"
+    "prisma": "=4.7.0"
   },
   "dependencies": {
-      "@prisma/client": "=4.8.0"
+      "@prisma/client": "=4.7.0"
   }
 }

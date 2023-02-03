@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 
-const coldstart = true
+var coldstart = true
 const client = new PrismaClient()
 
 export const handler = async(event) => {
