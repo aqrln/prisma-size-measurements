@@ -1,0 +1,130 @@
+
+4.9
+
+node_modules: 22MB
+zipped size: 8.6MB
+
+    311ms
+    311ms
+    311.12ms
+    304ms
+    314ms
+
+Init duration
+317.93 ms
+Duration
+1465.82 ms
+
+Init duration
+313.44 ms
+Duration
+2965.51 ms
+
+Init duration
+313.89 ms
+Duration
+2898.97 ms
+Billed duration
+2899 ms
+Resources configured
+128 MB
+Max memory used
+102 MB
+
+Warm durations:
+1519.97 ms
+860.68 ms
+848.85 ms
+870.36 ms
+892.71 ms
+879.82 ms
+
+
+4.8
+
+node_modules: 31MB
+zipped size: 8.6MB
+
+Init duration
+324.54 ms
+Duration
+2858.18 ms
+
+Init duration
+340.49 ms
+Duration
+2990.03 ms
+Billed duration
+2991 ms
+Resources configured
+128 MB
+Max memory used
+104 MB
+
+Warm duration:
+1112.62 ms
+712ms
+650ms
+699ms
+752ms
+1002ms
+
+Init duration
+313.55 ms
+Duration
+2933.26 ms
+Billed duration
+2934 ms
+Resources configured
+128 MB
+Max memory used
+104 MB
+
+Warm durations:
+1382.12 ms
+704.42 ms
+737.09 ms
+704.91 ms
+774.98 ms
+
+4.7
+
+node_modules: 49MB
+zipped size: 17MB
+
+Init duration
+325.67 ms
+Duration
+3405.12 ms
+
+Init duration
+309.09 ms
+Duration
+3341.72 ms
+Billed duration
+3342 ms
+Resources configured
+128 MB
+Max memory used
+110 MB
+
+Init duration
+355.44 ms
+Duration
+3531.15 ms
+Billed duration
+3532 ms
+Resources configured
+128 MB
+Max memory used
+110 MB
+
+Warm durations:
+1223.60 ms
+703.48 ms
+742.71 ms
+729.74 ms
+695.10 ms
+738.07 ms
+1049.92 ms
+718.68 ms
