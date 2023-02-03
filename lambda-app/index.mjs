@@ -1,9 +1,9 @@
 import { PrismaClient } from '@prisma/client'
 
 const coldstart = true
+const client = new PrismaClient()
 
 export const handler = async(event) => {
-    const client = new PrismaClient()
     const result = await client.$queryRaw`SELECT 'meowmeow'`
     const response = {
         statusCode: 200,
