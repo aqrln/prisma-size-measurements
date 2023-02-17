@@ -85,7 +85,7 @@
             : Delete the local binaries
             find node_modules -name '*debian-openssl*' -delete
             find node_modules -name '*rhel-openssl*' -delete
-            find node_modules -name 'arm64-openssl-1.1.x*' -delete
+            find node_modules -name '*arm64-openssl-1.1.x*' -delete
             # find node_modules -name '*arm64-openssl*' -delete
             : Delete the CLI
             rm -rf node_modules/prisma
