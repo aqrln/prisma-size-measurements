@@ -79,8 +79,8 @@
           # aws lambda update-function-code --function-name cold-start-test --zip-file "fileb://lambda-app/lambda-app.zip"
           awsZip = pkgs.writeShellScriptBin "awsZip" ''
             set -euxo pipefail
-            # rm -rf lambda-app/node_modules
-            # docker run --rm -it -v $(pwd)/lambda-app:/home --entrypoint=bash docker.io/node:lts -c 'cd /home; npm i; npx prisma generate'
+            rm -rf lambda-app/node_modules
+            docker run --rm -it -v $(pwd)/lambda-app:/home --entrypoint=bash docker.io/node:lts -c 'cd /home; npm i; npx prisma generate'
             pushd lambda-app
             : Delete the local binaries
             find node_modules -name '*debian-openssl*' -delete
