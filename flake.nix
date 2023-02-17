@@ -7,7 +7,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages."${system}";
-        packageString = "prisma@4.9.0";
+        packageString = "4.11.0-integration-log-engine-init.1";
 
         runInContainer = (name: script:
           let scriptFile = pkgs.writeText "scriptFile" script; in
@@ -78,15 +78,19 @@
           # last step:
           # aws lambda update-function-code --function-name cold-start-test --zip-file "fileb://lambda-app/lambda-app.zip"
           awsZip = pkgs.writeShellScriptBin "awsZip" ''
-            rm -rf lambda-app/node_modules
-            docker run --rm -it -v /nix:/nix -v ./lambda-app:/home --entrypoint=bash docker.io/node:lts -c 'cd /home; npm i; npx prisma generate'
+            set -euxo pipefail
+            # rm -rf lambda-app/node_modules
+            # docker run --rm -it -v $(pwd)/lambda-app:/home --entrypoint=bash docker.io/node:lts -c 'cd /home; npm i; npx prisma generate'
             pushd lambda-app
             : Delete the local binaries
             find node_modules -name '*debian-openssl*' -delete
+            find node_modules -name '*rhel-openssl*' -delete
+            find node_modules -name 'arm64-openssl-1.1.x*' -delete
+            # find node_modules -name '*arm64-openssl*' -delete
             : Delete the CLI
             rm -rf node_modules/prisma
-            rm lambda-app.zip
-            ${pkgs.zip}/bin/zip -r lambda-app.zip .
+            rm -f lambda-app.zip
+            ${pkgs.zip}/bin/zip -r ../lambda-app.zip .
             popd
           '';
 

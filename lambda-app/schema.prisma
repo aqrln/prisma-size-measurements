@@ -1,14 +1,14 @@
-
 datasource db {
   provider = "sqlite"
   url      = "file:db.sqlite"
 }
 
 generator client {
-    provider = "prisma-client-js"
-    binaryTargets = ["native", "rhel-openssl-1.0.x"]
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native", "rhel-openssl-1.0.x", "linux-arm64-openssl-1.0.x"]
+  previewFeatures = ["tracing"]
 }
 
 model Abcd {
-id Int @id
+  id Int @id
 }
