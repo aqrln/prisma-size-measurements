@@ -87,6 +87,9 @@
             find node_modules -name '*rhel-openssl*' -delete
             find node_modules -name '*arm64-openssl*' -delete
             cp ~/prisma/prisma-engines/target/aws/release/libquery_engine.so node_modules/.prisma/client/libquery_engine-linux-arm64-openssl-1.0.x.so.node
+            # cp ~/prisma/prisma-engines/target/aws/release/libquery_engine_stub.so node_modules/.prisma/client/libquery_engine-linux-arm64-openssl-1.0.x.so.node
+            # cp ~/prisma/prisma-engines/target/x86_64-unknown-linux-gnu/release/libquery_engine.so node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node
+            # cp ~/prisma/prisma-engines/target/x86_64-unknown-linux-gnu/release/libquery_engine_stub.so node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node
             : Delete the CLI
             rm -rf node_modules/prisma
             rm -f lambda-app.zip
