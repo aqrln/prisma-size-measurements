@@ -17,10 +17,10 @@ export const handler = async (event) => {
   // console.log("filename", import.meta.url);
   // console.log({ qePath, size: stat.size });
   const result = await client.$queryRaw`SELECT 'meowmeow'`;
+  const arch = process.arch;
   const response = {
     statusCode: 200,
-    body: JSON.stringify(result),
-    coldstart,
+    body: JSON.stringify({ result, coldstart, arch }),
   };
   coldstart = false;
   return response;
